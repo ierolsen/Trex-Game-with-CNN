@@ -407,5 +407,6 @@ Now here, I set up **delay**
 
         i += 1
 ```
-![trex_gif](https://s8.gifyu.com/images/trex.gif)
+![ezgif com-gif-maker](https://user-images.githubusercontent.com/30235603/101776829-db8e5680-3af1-11eb-975f-00f2b88918ac.gif)
+
 
