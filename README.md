@@ -1,6 +1,6 @@
 # Trex Game with CNN
 
-In this repo, I created a model that plays Trex Game. I need to explain that, this model is not a Reinforcement Learning (RL) model. It is a simple CNN model which predicts objects and keyboard actions. 
+In this repo, I created a model that plays Trex Game. I need to explain that, this model is not a Reinforcement Learning (RL) model. It is a simple CNN model that predicts objects and keyboard actions. 
 
 ### Content:
 ##### 1) Getting Data
@@ -26,9 +26,9 @@ To import that, first, the library must be installed:
 ```
 pip install keyboard
 ```
-Using this library called **uuid**, I can record my screen for the game. When I run the all lines, I'll switch the game screen and the model that is trained with the data I got, will predict action according to images.
+Using this library called **uuid**, I can record my screen for the game. When I run all lines, I'll switch the game screen and the model that is trained with the data I got, will predict action according to images.
 
-Also, the library called **mss** helps me to cut off some areas in the screen. Thus, the model can only focuses on determined area. But at the first, this librariy must be installed like others. For that:
+Also, the library called **mss** helps me to cut off some areas in the screen. Thus, the model can only focuses on determined area. But at the first, this library must be installed like others. For that:
 ```
 pip install mss
 ```
@@ -99,7 +99,7 @@ Now, I am ready to get data in game.
 ---
 
 # 2) Train a CNN Model
-In this content, I will train a CNN model using the data I got. The model will predict **keyboard actions** according to images. For example if model recognises a cactus, the action will be **"UP"**, or if model recognises a bird, the action will be **"DOWN"** or **"UP"**. In order to take place that, first I start with that import libraries.
+In this content, I will train a CNN model using the data I got. The model will predict **keyboard actions** according to images. For example, if the model recognizes a cactus, the action will be **"UP"**, or if the model recognizes a bird, the action will be **"DOWN"** or **"UP"**. In order to take place that, first I start with that import libraries.
 ```python
 import glob
 import os
@@ -135,7 +135,7 @@ label = filename.split("_")[0]
 ```
 >> **OUTPUT:** "down"
 
-Also you can check the **record_screen function** to how to save the images in the first section.
+Also, you can check the **record_screen function** to how to save the images in the first section.
 After determined labels, I'll resize and normalization images
 ```python
 im = np.array(Image.open(img).convert("L").resize((width, height)))
@@ -227,7 +227,7 @@ To use trained model in the game, I need to save it.
 open("trex_model.json","w").write(model.to_json())
 model.save_weights("trex_weight.h5")
 ```
-and finally I have a Trained CNN Model. 
+and finally, I have a Trained CNN Model. 
 
 ---
 
@@ -407,10 +407,6 @@ Now here, I set up **delay**
 
         i += 1
 ```
-
----
-
 ![ezgif com-gif-maker](https://user-images.githubusercontent.com/30235603/101776829-db8e5680-3af1-11eb-975f-00f2b88918ac.gif)
 
 ----
-
