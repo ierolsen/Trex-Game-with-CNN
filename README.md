@@ -1,6 +1,6 @@
 # Trex Game with CNN
 
-In this repo, I created a model that play Trex Game. I need to explain that, this model is not a Reinforcement Learning (RL) model. It is a simple CNN model which predict objects and keyboard actions. 
+In this repo, I created a model that plays Trex Game. I need to explain that, this model is not a Reinforcement Learning (RL) model. It is a simple CNN model which predicts objects and keyboard actions. 
 
 ### Content:
 ##### 1) Getting Data
@@ -21,19 +21,19 @@ from PIL import Image
 from mss import mss
 ```
 
-Using the library called **keyboard** I saved my action for example "up","down" and "rigt".
-To import that, first the library must be installed:
+Using the library called **keyboard** I saved my action for example "up", "down" and "right".
+To import that, first, the library must be installed:
 ```
 pip install keyboard
 ```
-Using this library called **uuid**, I can record my screen for game. When I run the all lines, I'll switch game screen and the model that is trained with data I got, will predict action according to images.
+Using this library called **uuid**, I can record my screen for the game. When I run the all lines, I'll switch the game screen and the model that is trained with the data I got, will predict action according to images.
 
-Also the library called **mss** helps me to cut off some area in the screen. Thus, model can only focuses determined area. But at the first, this librariy must be installed like others. For that:
+Also, the library called **mss** helps me to cut off some areas in the screen. Thus, the model can only focuses on determined area. But at the first, this librariy must be installed like others. For that:
 ```
 pip install mss
 ```
 
-After import libraries, I will set coordinates of game, because in the screen there are a lot of useless stuff, in order to remove them I will determine some coordinates using Paint :) 
+After import libraries, I will set coordinates of the game, because in the screen there are a lot of useless stuff, in order to remove them I will determine some coordinates using Paint :) 
 
 ![size](https://user-images.githubusercontent.com/30235603/101773976-c9aab480-3aed-11eb-9722-0e73f10bc406.png)
 
@@ -43,7 +43,7 @@ mon = {"top":370,
        "width":200,
        "height":145}
 ```
-Using the library called **mss**, I can easly cut off the area that I want model to see only. Therefore I defined **mss**
+Using the library called **mss**, I can easily cut off the area that I want the model to see only. Therefore I defined **mss**
 ```python
 sct = mss()
 ```
@@ -52,7 +52,7 @@ Now, I will create a function that I will use for recording.
 ```python
 i = 0
 def record_screen(record_id, key):
-    global i # I will use this i inside and outside of function. (I have an other i)
+    global i # I will use this i inside and outside of the function. (I have an other i)
 
     i += 1
     print(f"{key}, {i}") #key: char of keyboard, i: num of press for char
@@ -60,7 +60,7 @@ def record_screen(record_id, key):
     im = Image.frombytes("RGB", img.size, img.rgb)
     im.save(f"data/img/{key}_{record_id}_{i}.png")
 ```
-After this record function, I need to define an other function for exit. When I want to exit in recording, I will press "esc" and then exit function will be called.
+After this record function, I need to define an other function for the exit. When I want to exit in recording, I will press "esc" and then the exit function will be called.
 For that:
 ```python
 is_exit = False
@@ -129,13 +129,13 @@ filename = os.path.basename(img)
 ```
 >> **OUTPUT:** "down_022f78bc-435f-4978-8524-ff1ea1a40d9a_1.png"
 
-Then I'll use split method and seperate them as "_", after that the first index will be our label. 
+Then I'll use split method and separate them as "_", after that the first index will be our label. 
 ```python
 label = filename.split("_")[0]
 ```
 >> **OUTPUT:** "down"
 
-Also you can check the **record_screen function** to how save the images in first section.
+Also you can check the **record_screen function** to how to save the images in the first section.
 After determined labels, I'll resize and normalization images
 ```python
 im = np.array(Image.open(img).convert("L").resize((width, height)))
@@ -264,7 +264,7 @@ Now, I can upload my Trained CNN Model
 model = model_from_json(open("trex_model.json", "r").read())
 model.load_weights("trex_weight.h5")
 ```
-I will determine my labels again because the model predicts images, I make it choose in this list according to output of the model. I do not touch keyboard, model does.
+I will determine my labels again because the model predicts images, I make it choose in this list according to output of the model. I do not touch the keyboard, the model does.
 ```python
 #down:0, right:1, up:2
 labels = ["Down", "Right", "Up"]
@@ -379,7 +379,7 @@ Here, **i<1500** is random number. (1500 is frame)
         else:
             time.sleep(0.17)
 ```
-After that, the dinosaur downs again but I must **release** it because, if I don't, dinosaur keep to stay down.
+After that, the dinosaur downs again but I must **release** it because, if I don't, the dinosaur keeps to stay down.
 ```python
         keyboard.press(keyboard.KEY_DOWN)
         keyboard.release(keyboard.KEY_DOWN)
@@ -407,6 +407,10 @@ Now here, I set up **delay**
 
         i += 1
 ```
+
+---
+
 ![ezgif com-gif-maker](https://user-images.githubusercontent.com/30235603/101776829-db8e5680-3af1-11eb-975f-00f2b88918ac.gif)
 
+----
 
