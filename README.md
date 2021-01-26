@@ -26,16 +26,14 @@ To import that, first, the library must be installed:
 ```
 pip install keyboard
 ```
-Using this library called **uuid**, I can record my screen for the game. When I run all lines, I'll switch the game screen and the model that is trained with the data I got, will predict action according to images.
-
-Also, the library called **mss** helps me to cut off some areas in the screen. Thus, the model can only focuses on determined area. But at the first, this library must be installed like others. For that:
+Using this library called **mss**, I can record my screen for the game. When I run all lines, I'll switch the game screen and the model that is trained with the data I got, will predict action according to images. Also, this library (**mss**) helps me to cut off some areas in the screen. Thus, the model can only focuses on determined area. But at the first, this library must be installed like others. For that:
 ```
 pip install mss
 ```
 
 After import libraries, I will set coordinates of the game, because in the screen there are a lot of useless stuff, in order to remove them I will determine some coordinates using Paint :) 
 
-![size](https://user-images.githubusercontent.com/30235603/101773976-c9aab480-3aed-11eb-9722-0e73f10bc406.png)
+![size](https://user-images.githubusercontent.com/30235603/105873074-645a4680-5ffb-11eb-8dde-86a67d1225c9.png)
 
 ```python
 mon = {"top":370,
